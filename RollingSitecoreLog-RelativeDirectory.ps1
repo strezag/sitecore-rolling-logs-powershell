@@ -69,6 +69,19 @@ Function ConfirmOptions{
     $Form.Add_Shown({$Form.Activate()})
     [void] $Form.ShowDialog() 
 }
+
+Function Get-LogColor {
+    Param([Parameter(Position=0)]
+    [String]$LogEntry)
+
+    process {
+        if ($LogEntry.Contains("INFO")) {Return "Green"}
+        elseif ($LogEntry.Contains("WARN")) {Return "Yellow"}
+        elseif ($LogEntry.Contains("ERROR")) {Return "Red"}
+	    elseif ($LogEntry.Contains("Exception")) {Return "Red"}
+        else {Return "Red"}
+    }
+}
  
 
  Try {
@@ -84,30 +97,30 @@ Function ConfirmOptions{
         
         if(($script:enableInfo -eq $true) -and ($script:enableWarn -eq $true) -and ($script:enableError -eq $true)){
              Write-Host 'All Log Options Enabled...'
-            Get-Content $fullFileFath -wait 
+            Get-Content $fullFileFath -wait | ForEach {Write-Host -ForegroundColor (Get-LogColor $_) $_}
 
         }elseif(($script:enableInfo -eq $true) -and ($script:enableWarn -eq $true) -and ($script:enableError -eq $false)){
              Write-Host 'Disable ERROR'
-             Get-Content $fullFileFath -wait | where { $_ -NotMatch " ERROR " }
+             Get-Content $fullFileFath -wait | where { $_ -NotMatch " ERROR " } | ForEach {Write-Host -ForegroundColor (Get-LogColor $_) $_}
 
         }elseif(($script:enableInfo -eq $true) -and ($script:enableWarn -eq $false) -and ($script:enableError -eq $false)){
              Write-Host 'Enable INFO only'
-            Get-Content $fullFileFath -wait | where { $_ -Match  " INFO " }
+            Get-Content $fullFileFath -wait | where { $_ -Match  " INFO " } | ForEach {Write-Host -ForegroundColor (Get-LogColor $_) $_}
         }
         elseif(($script:enableInfo -eq $false) -and ($script:enableWarn -eq $true) -and ($script:enableError -eq $false)){
              Write-Host 'Enable WARN only'
-            Get-Content $fullFileFath -wait | where { $_ -Match " WARN " }
+            Get-Content $fullFileFath -wait | where { $_ -Match " WARN " } | ForEach {Write-Host -ForegroundColor (Get-LogColor $_) $_}
         }
         elseif(($script:enableInfo -eq $false) -and ($script:enableWarn -eq $false) -and ($script:enableError -eq $true)){
              Write-Host 'Enable ERROR only'
-            Get-Content $fullFileFath -wait | where { $_ -Match " ERROR " }
+            Get-Content $fullFileFath -wait | where { $_ -Match " ERROR " } | ForEach {Write-Host -ForegroundColor (Get-LogColor $_) $_}
         }
         elseif(($script:enableInfo -eq $false) -and ($script:enableWarn -eq $true) -and ($script:enableError -eq $true)){
              Write-Host 'Disable INFO'
-            Get-Content $fullFileFath -wait | where { $_ -NotMatch  " INFO " }
+            Get-Content $fullFileFath -wait | where { $_ -NotMatch  " INFO " } | ForEach {Write-Host -ForegroundColor (Get-LogColor $_) $_}
         }elseif(($script:enableInfo -eq $true) -and ($script:enableWarn -eq $false) -and ($script:enableError -eq $true)){
              Write-Host 'Disable WARN'
-            Get-Content $fullFileFath -wait | where { $_ -NotMatch  " WARN " }
+            Get-Content $fullFileFath -wait | where { $_ -NotMatch  " WARN " } | ForEach {Write-Host -ForegroundColor (Get-LogColor $_) $_}
         }
 
 }
