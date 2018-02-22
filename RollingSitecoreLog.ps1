@@ -1,6 +1,6 @@
 ﻿<#
 .SYNOPSIS
-Real-time Sitecore log monitoring using PowerShell with the ability to filter in/out INFO, WARN, ERROR entries.
+Real-time Sitecore log monitoring using PowerShell with the option to filter in/out INFO, WARN, ERROR entries.
 
 .DESCRIPTION
 Right-click and Run with PowerShell.  

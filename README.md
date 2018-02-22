@@ -23,5 +23,7 @@ Runs without any UI.  Runs in the directory you place it in.
 ![](https://github.com/strezag/sitecore-rolling-logs-powershell/blob/master/screenshots/5.png?raw=true)
 2. Right-click and Run with PowerShell.  
 ![](https://github.com/strezag/sitecore-rolling-logs-powershell/blob/master/screenshots/6.png?raw=true)
-3. The script will automatically grab the latest 'log.*' file and begin reading it with the appropriate filters.
+3. Prompt displays to filter log messages (INFO, WARN, ERROR).
+![](https://github.com/strezag/sitecore-rolling-logs-powershell/blob/master/screenshots/4.png?raw=true)
+4. The script will automatically grab the latest 'log.*' file and begin reading it with the appropriate filters.
 ![](https://github.com/strezag/sitecore-rolling-logs-powershell/blob/master/screenshots/3.png?raw=true)
