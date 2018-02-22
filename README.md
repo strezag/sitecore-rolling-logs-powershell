@@ -1,11 +1,10 @@
 # Real-time Rolling/Trailing Sitecore Logs with PowerShell
-Real-time Sitecore log monitoring using PowerShell.
+Real-time Sitecore log monitoring using PowerShell with the option to filter in/out INFO, WARN, ERROR entries.
 
 ## Choose between two scripts:
 
 ### RollingSitecoreLogs.ps1
-Option to filter in/out INFO, WARN, ERROR entries.
-Save this script anywhere on your PC.
+Save and run this script anywhere on your machine.
 
 1. Right-click and Run with PowerShell.  
 ![](https://github.com/strezag/sitecore-rolling-logs-powershell/blob/master/screenshots/1.png?raw=true)
@@ -17,7 +16,7 @@ Save this script anywhere on your PC.
 ![](https://github.com/strezag/sitecore-rolling-logs-powershell/blob/master/screenshots/3.png?raw=true)
 
 ### RollingSitecoreLogs-RelativeDirectory.ps1
-Runs without any UI.  Runs in the directory you place it in. 
+Save and run this script from a /logs directory. 
 
 1. Drop this script into your Sitecore's log folder.
 ![](https://github.com/strezag/sitecore-rolling-logs-powershell/blob/master/screenshots/5.png?raw=true)
