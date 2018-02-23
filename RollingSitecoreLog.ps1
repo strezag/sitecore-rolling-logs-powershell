@@ -95,7 +95,7 @@ Function Get-LogColor {
     if ($result -eq [Windows.Forms.DialogResult]::OK){
         Write-Host 'Folder selected: ' $FolderBrowser.SelectedPath -ForegroundColor Green
 
-        $latestLog = Get-ChildItem -Path $FolderBrowser.SelectedPath |Where-Object {$_.Name -like 'log.*'}| Sort-Object LastAccessTime -Descending | Select-Object -First 1
+        $latestLog = Get-ChildItem -Path $FolderBrowser.SelectedPath |Where-Object {$_.Name -match '^(log\.)(\d*)(.\d*)?(\.txt)$'}| Sort-Object LastAccessTime -Descending | Select-Object -First 1
         $fullFileFath = $latestLog.FullName
 
         Write-Host 'Opening' $fullFileFath -ForegroundColor Green '...'

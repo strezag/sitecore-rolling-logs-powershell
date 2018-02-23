@@ -88,7 +88,7 @@ Function Get-LogColor {
 
         $currentDirectory = (Resolve-Path .\).Path
 
-        $latestLog = Get-ChildItem -Path $currentDirectory |Where-Object {$_.Name -like 'log.*'}| Sort-Object LastAccessTime -Descending | Select-Object -First 1
+        $latestLog = Get-ChildItem -Path $currentDirectory |Where-Object {$_.Name -match '^(log\.)(\d*\.\d*)(\.txt)$'}| Sort-Object LastAccessTime -Descending | Select-Object -First 1
         $fullFileFath = $latestLog.FullName
 
         Write-Host 'Opening' $fullFileFath -ForegroundColor Green '...'
