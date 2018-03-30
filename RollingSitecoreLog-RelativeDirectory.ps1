@@ -120,7 +120,7 @@ $type::SetWindowPos($handle, $alwaysOnTop, 0, 0, 0, 0, 0x0003)
 
         }elseif(($script:enableInfo -eq $true) -and ($script:enableWarn -eq $true) -and ($script:enableError -eq $false)){
              Write-Host 'Disable ERROR'
-             Get-Content $fullFileFath -wait | where { $_ -NotMatch " ERROR " } | ForEach {Write-Host -ForegroundColor (Get-LogColor $_) $_}
+             Get-Content $fullFileFath -wait | where {  $_ -Match " WARN " -or $_ -Match  " INFO "  } | ForEach {Write-Host -ForegroundColor (Get-LogColor $_) $_}
 
         }elseif(($script:enableInfo -eq $true) -and ($script:enableWarn -eq $false) -and ($script:enableError -eq $false)){
              Write-Host 'Enable INFO only'
